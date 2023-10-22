@@ -12,10 +12,18 @@ const Popular = () => {
 
 
   const getPopular = async () => {
+    const check = localStorage.getItem('popular');
+   
+    if(check) {
+      setData(JSON.parse(check));
+      return;
+    } 
+
     try {
       const { data } = await axios
           .get(`${url}?apiKey=${process.env.REACT_APP_API_KEY}&number=9`);
       const { recipes } = data;
+      localStorage.setItem('popular', JSON.stringify(recipes));
       setData(recipes);
       console.log(data)
 
@@ -26,7 +34,7 @@ const Popular = () => {
 
   
   useEffect(() => {
-    // getPopular();
+    getPopular();
   }, []);
 
   return (
@@ -85,16 +93,16 @@ const Card = styled.div`
     letter-spacing: 2px;
     color: #ffffff;
     height: 25%;
-    font-size: clamp(0.9rem, 1vw, 1.2rem);
+    font-size: clamp(0.8rem, 1.5vw, 1.2rem);
     font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    background: rgba(0,0,0, 0.01);
+    background: rgba(0,0,0, 0.005);
     border-bottom: 1px solid rgba(255,255,255, 0.2);
     border-top: 1px solid rgba(255,255,255, 0.2);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(15px);
   }
 `;
 
