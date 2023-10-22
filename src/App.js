@@ -1,12 +1,10 @@
+import Pages from './pages/Pages';
 
 function App() {
   return (
     <div>
-        <h1>hello  </h1>
-        <p>
-        {process.env.REACT_APP_API_KEY}
-        </p>
-        <pre>{process.env.REACT_APP_API_KEY}</pre>
+      <h1>Hello</h1>
+      <Pages />
     </div>
   );
 }
