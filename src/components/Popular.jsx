@@ -86,23 +86,20 @@ const Card = styled.div`
   }
   p {
     position: absolute;
-    z-index: 2;
+    z-index: 3;
     left: 0;
     bottom: 0;
+    padding: 0 5px;
     text-align: center;
     letter-spacing: 2px;
-    color: #ffffff;
+    color: #ffd038;
     height: 25%;
-    font-size: clamp(0.8rem, 1.5vw, 1.2rem);
+    font-size: clamp(0.7rem, 1.4vw, 1.1rem);
     font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
-    background: rgba(0,0,0, 0.005);
-    border-bottom: 1px solid rgba(255,255,255, 0.2);
-    border-top: 1px solid rgba(255,255,255, 0.2);
-    backdrop-filter: blur(15px);
   }
 `;
 
