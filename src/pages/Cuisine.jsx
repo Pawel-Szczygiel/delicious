@@ -11,7 +11,6 @@ const url = 'https://api.spoonacular.com/recipes/complexSearch';
 const Cuisine = () => {
     const { type } = useParams()
 
-
     const [data, setData] = useState([]);
 
 
@@ -38,17 +37,42 @@ const Cuisine = () => {
   
     
     useEffect(() => {
-      console.log(type)
         getPopular(type);
-
     }, [type]);
 
     return (
-    <div>
-      cuisine 
-        <h4>{type}</h4>
-    </div>
+    <Grid>
+     {data.map(item => {
+      const {id, image, title} = item;
+      return (
+        <Card key={id}>
+          <img src={image} alt={title}/>
+          <h4>{title}</h4>
+        </Card>
+      )
+     })}
+    </Grid>
   )
 }
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-gap: 3rem;
+`;
+
+const Card = styled.div`
+  img{
+    width: 100%;
+    border-radius: 2rem;
+  }
+  a{
+    text-decoration: none;
+  }
+  h4{
+    text-align: center;
+    padding: 1px;
+  }
+`;
 
 export default Cuisine
