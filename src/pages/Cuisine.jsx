@@ -17,11 +17,8 @@ const Cuisine = () => {
     const getPopular = async type => {
       const check = localStorage.getItem(`${type}`);
      
-      if(check) {
-        setData(JSON.parse(check));
-        return;
-      } 
-  
+      if(check) return setData(JSON.parse(check));
+        
       try {
         const { data } = await axios
             .get(`${url}?apiKey=${process.env.REACT_APP_API_KEY}&cuisine=${type}`);
@@ -62,16 +59,27 @@ const Grid = styled.div`
 `;
 
 const Card = styled.div`
+  background-color:#fff;
+  box-shadow: rgb(38, 57, 77) 0px 20px 20px -10px;
+  border-radius: 2rem;
+  transition: all .3s linear;
+  cursor: pointer;
+
+  &:hover{
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -5px;
+  }
+
   img{
     width: 100%;
-    border-radius: 2rem;
+    border-top-right-radius: 2rem;
+    border-top-left-radius: 2rem;
   }
   a{
     text-decoration: none;
   }
   h4{
     text-align: center;
-    padding: 1px;
+    padding: .5rem;
   }
 `;
 

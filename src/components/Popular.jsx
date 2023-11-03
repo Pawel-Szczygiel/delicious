@@ -25,7 +25,6 @@ const Popular = () => {
       const { recipes } = data;
       localStorage.setItem('popular', JSON.stringify(recipes));
       setData(recipes);
-      console.log(data)
 
     } catch (error) {
       console.warn(error);
@@ -47,7 +46,7 @@ const Popular = () => {
                 arrows: false, 
                 pagination:false, 
                 drag: 'free', 
-                gap: '5rem'
+                gap: '2rem'
               }}
               >
               {data.map(recipe => (
@@ -74,6 +73,7 @@ const Card = styled.div`
   border-radius: 2rem;
   overflow: hidden;
   position: relative;
+  cursor: pointer;
 
   img {
     border-radius: 2rem;
@@ -88,13 +88,13 @@ const Card = styled.div`
     position: absolute;
     z-index: 3;
     left: 0;
-    bottom: 0;
+    bottom: 5%;
     padding: 0 5px;
     text-align: center;
     letter-spacing: 2px;
     color: #ffd038;
     height: 25%;
-    font-size: clamp(0.7rem, 1.4vw, 1.1rem);
+    font-size: clamp(0.5rem, 1vw, 1rem);
     font-weight: 600;
     display: flex;
     align-items: center;
@@ -106,6 +106,8 @@ const Card = styled.div`
 const Gradient= styled.div`
   z-index: 1;
   position: absolute;
+  left: 0;
+  top: 0;
   width: 100%;
   height: 100%;
   background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.5))

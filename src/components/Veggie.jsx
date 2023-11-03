@@ -70,14 +70,16 @@ const Veggie = () => {
 
 const Wrapper = styled.div`
   margin: 4rem 1rem;
-`;
+  `;
 
 const Card = styled.div`
   min-height: 20rem;
   border-radius: 2rem;
   overflow: hidden;
   position: relative;
+  cursor: pointer;
 
+  
   img {
     border-radius: 2rem;
     position: absolute;
@@ -91,13 +93,13 @@ const Card = styled.div`
     position: absolute;
     z-index: 3;
     left: 0;
-    bottom: 0;
+    bottom: 5%;
     padding: 0 5px;
     text-align: center;
     letter-spacing: 2px;
     color: #ffd038;
     height: 25%;
-    font-size: clamp(0.7rem, 1.4vw, 1.1rem);
+    font-size: clamp(0.5rem, 1vw, 1rem);
     font-weight: 600;
     display: flex;
     align-items: center;
