@@ -14,7 +14,7 @@ const Cuisine = () => {
     const [data, setData] = useState([]);
 
 
-    const getPopular = async type => {
+    const getCuisine = async type => {
       const check = localStorage.getItem(`${type}`);
      
       if(check) return setData(JSON.parse(check));
@@ -34,7 +34,7 @@ const Cuisine = () => {
   
     
     useEffect(() => {
-        getPopular(type);
+      getCuisine(type);
     }, [type]);
 
     return (
