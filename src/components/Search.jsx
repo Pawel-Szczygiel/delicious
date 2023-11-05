@@ -50,7 +50,8 @@ const FormStyle = styled.form`
     position: absolute;
     top: 50%;
     left: 0;
-    translate: 100% -50%; 
+    font-size: 1.2rem;
+    translate: 80% -50%; 
     color: #fff;
   }
 `;

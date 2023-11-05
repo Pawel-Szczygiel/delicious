@@ -1,31 +1,35 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
+
 
 const url = 'https://api.spoonacular.com/recipes/complexSearch';
 
 const Searched = () => {
     const  { search }  = useParams()
     const [data, setData] = useState([]);
+  
 
     const getSearch = async type => {
         const check = localStorage.getItem(`${type}`);
         if(check) return setData(JSON.parse(check));
-          
+   
         try {
           const { data } = await axios
               .get(`${url}?apiKey=${process.env.REACT_APP_API_KEY}&query=${type}`);
           const { results } = data;
-          
+
+          if (results.length === 0) return;
+        
           localStorage.setItem(`${type}`, JSON.stringify(results));
           setData(results);
        
-    
         } catch (error) {
           console.warn(error);
         }
+     
       }
 
       useEffect(() => {
@@ -41,8 +45,12 @@ const Searched = () => {
      const {id, image, title} = item;
      return (
        <Card key={id}>
+        <Link to={`/recipe/${id}`}>
          <img src={image} alt={title}/>
-         <h4>{title}</h4>
+         <div>
+          <h4>{title}</h4>
+         </div>
+        </Link>
        </Card>
      )
     })}
@@ -78,7 +86,14 @@ const Card = styled.div`
   }
   h4{
     text-align: center;
-    padding: .5rem;
+    padding: .6rem;
+    font-size: clamp(.9rem, 1vw, 1rem);
+  }
+  div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50px;
   }
 `;
 

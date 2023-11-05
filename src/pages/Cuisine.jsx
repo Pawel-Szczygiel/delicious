@@ -25,7 +25,7 @@ const Cuisine = () => {
         const { results } = data;
         localStorage.setItem(`${type}`, JSON.stringify(results));
         setData(results);
-        console.log(data)
+   
   
       } catch (error) {
         console.warn(error);
@@ -43,8 +43,12 @@ const Cuisine = () => {
       const {id, image, title} = item;
       return (
         <Card key={id}>
-          <img src={image} alt={title}/>
-          <h4>{title}</h4>
+          <Link to={`/recipe/${id}`}>
+            <img src={image} alt={title}/>
+            <div>
+              <h4>{title}</h4>
+            </div>
+          </Link>
         </Card>
       )
      })}
@@ -79,7 +83,14 @@ const Card = styled.div`
   }
   h4{
     text-align: center;
-    padding: .5rem;
+    padding: .6rem;
+    font-size: clamp(.9rem, 1vw, 1rem);
+  }
+  div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50px;
   }
 `;
 

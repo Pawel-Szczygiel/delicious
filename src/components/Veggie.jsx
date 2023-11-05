@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import styled from 'styled-components';
 import {Splide, SplideSlide} from '@splidejs/react-splide';
@@ -54,10 +55,12 @@ const Veggie = () => {
           >
           {data.map(recipe => (
             <SplideSlide key={recipe.id}>
-              <Card  > 
+              <Card  >
+                <Link to={`/recipe/${recipe.id}`}>
+                  <Gradient />
                   <p>{recipe.title}</p>
                   <img src={recipe.image} alt={recipe.title} />
-                  <Gradient />
+                </Link> 
               </Card>
             </SplideSlide>
           ))}
