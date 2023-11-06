@@ -22,7 +22,7 @@ const Popular = () => {
 
     try {
       const { data } = await axios
-          .get(`${url}?apiKey=${process.env.REACT_APP_API_KEY}&number=9`);
+          .get(`${url}components&number=9`);
       const { recipes } = data;
       localStorage.setItem('popular', JSON.stringify(recipes));
       setData(recipes);

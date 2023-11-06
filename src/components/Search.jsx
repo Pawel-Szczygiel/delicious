@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useRef, useEffect} from "react"
 import { FaSearch } from "react-icons/fa"
 import styled from "styled-components"
 import { useNavigate } from "react-router-dom"
@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 const Search = () => {
   const [input, setInput] = useState('');
   const navigate = useNavigate();
-
+  const inputRef = useRef();
 
   const submitHandler = e => {
     e.preventDefault();
@@ -15,13 +15,19 @@ const Search = () => {
     setInput('');
   }
 
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
   return (
     <FormStyle onSubmit={submitHandler}>
       <FaSearch/>
         <input 
         value={input} 
         onChange={e => setInput(e.target.value)}  
-        type="text" />
+        type="text" 
+        ref={inputRef}
+        />
     </FormStyle>
   )
 }
