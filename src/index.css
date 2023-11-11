@@ -57,3 +57,8 @@ a {
   color: rgb(56,56,56);
   user-select: none;
 }
+
+
+.flex{
+  flex-direction: column-reverse;
+}
